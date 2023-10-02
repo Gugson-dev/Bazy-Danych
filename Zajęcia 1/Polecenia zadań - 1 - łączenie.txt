@@ -1,0 +1,15 @@
+1. Odczytaj alfabetycznie uporządkowaną listę nazw produktów sprzedanych
+kiedykolwiek klientom o imieniu Jeffrey.
+
+2. Odczytaj imiona i nazwiska klientów, którzy nie złożyli ani jednego zamówienia.
+
+3. Bez używania funkcji CASE napisz zapytanie zwracające numer zamówienia
+(kolumna [SalesOrderID]), wysokość opłaty (kolumna [Freight]) i wyraz
+High lub Low, przy czym za kosztowne uznaj te zamówienia, których wartość
+opłaty przekracza 100, a pozostałe oceń jako małe. Przykładowy wynik pokazany
+jest poniżej:
+SalesOrderID Freight (No column name)
+71936 2456,9673 High
+71938 2220,3216 High
+71774 22,0087 Low
+71776 1,9703 Low

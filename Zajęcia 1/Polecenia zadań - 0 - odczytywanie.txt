@@ -1,0 +1,21 @@
+1. Odczytaj z tabeli [SalesLT].[Product] nazwy towarów (kolumna [Name])
+oraz powiększone o 20% ich ceny katalogowe (oblicz je na podstawie danych
+z kolumny [ListPrice]).
+
+2. Oblicz, ile dni upłynęło pomiędzy złożeniem a wysłaniem zrealizowanych
+zamówień (różnice między wartościami kolumn [ShipDate] i [OrderDate]
+tabeli [SalesLT].[SalesOrderHeader]).
+
+3. Wykorzystaj funkcje systemowe, do napisania zapytania, którego skrócony wynik został zamieszczony poniżej:
+
+(No column name) (No column name) (No column name)
+Produkt Touring-1000 Blue, 54 kosztuje 2384,10
+Produkt Touring-1000 Blue, 60 kosztuje 2384,10
+Produkt Mountain-200 Silver, 38 kosztuje 2320,00
+Produkt Mountain-200 Silver, 42 kosztuje 2320,00
+Produkt Mountain-200 Silver, 46 kosztuje 2320,00
+Produkt Mountain-200 Black, 38 kosztuje 2295,00
+Produkt Mountain-200 Black, 42 kosztuje 2295,00
+
+Podpowiedź: dane o produktach znajdują się w tabeli [SalesLT].[Product].
+

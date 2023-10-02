@@ -1,0 +1,16 @@
+1. Odczytaj za pomocą podzapytania numery zamówień złożonych przez klienta
+o nazwisku Eminhizer.
+
+2. Klauzula TOP pozwala odczytać określoną liczbę wierszy, ale zaczynając zawsze
+od pierwszego lub ostatniego. Chociaż serwer SQL umożliwia określenie nie
+tylko liczby wierszy, lecz także pozycji pierwszego zaklasyfikowanego wiersza, to niektóre serwery nie mają takiej funkcjonalności. Zadanie polega
+na odczytaniu przy użyciu niepowiązanego podzapytania, ale bez klauzuli
+OVER, wartości pięciu zamówień posortowanych według ich wartości i zwróceniu
+zamówień znajdujących się na pozycjach od 10. do 15.
+
+3. Odczytaj numery (kolumna SalesOrderID), daty zapłaty (kolumna DueDate)
+i numery klientów (kolumna CustomerID) dla zamówień złożonych ostatniego
+roboczego dnia każdego miesiąca.
+Podpowiedź: ponieważ ostatni roboczy dzień może być inny dla poszczególnych
+miesięcy, użyj podzapytania niepowiązanego zwracającego ostatnią (największą)
+datę złożenia zamówienia w każdym miesiącu.

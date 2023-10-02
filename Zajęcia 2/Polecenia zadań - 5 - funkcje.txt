@@ -1,0 +1,62 @@
+1. Stwórz funkcję skalarną, która po uruchumieniu może zwrócić wartość zamówienia (ilość x cena).
+
+Podpowiedź:
+- wywołując funkcję skorzystaj z tabeli Sales.OrderDetails, pola unitprice, qty
+- baza danych: TSQL2012
+
+2. Stwórz funkcję tabelaryczną, która zwróci wynik zapytania w postaci 3 kolumn ( orderid, unitprice, qty) 
+ w zależności od podanych wartości parametrów: @lowqty AND @highqty
+
+Podpowiedź:
+- skorzystaj z tabeli Sales.OrderDetails
+- pola unitprice, qty
+- baza danych: TSQL2012
+
+
+3. Stworzyć funkcję sprawdzającą (is_pesel), czy podany numer to numer PESEL. 
+W funkcji należy uwzględnić:
+
+- wyeleminować numery PESEL, dla których numer PESEL na 3 pozycji nie ma cyfry 0, 1, 2 lub 3: 
+ if SUBSTRING(@pesel,3,1) not in ('0','1','2','3') begin return 0 end
+- sprawdzić, czy podany numer to liczba - isnumeric('11111111111'),
+- sprawdzić, czy podany numer ma odpowiednią długość znaków (11) - len('11111111111'),
+- wyeleminować niestandardowe numery PESEL:
+if @PESEL='00000000000' begin return 0 end
+if @PESEL='12345678910' begin return 0 end
+if @PESEL='11111111116' begin return 0 end
+if @PESEL='11111111123' begin return 0 end
+- sprawdzić, czy suma kontrolna numeru PESEL jest zgodna:
+
+if (
+( ( cast(substring(@psl,1,1) as bigint)*9)
++(cast(substring(@psl,2,1) as bigint)*7)
++(cast(substring(@psl,3,1) as bigint)*3)
++(cast(substring(@psl,4,1) as bigint)*1)
++(cast(substring(@psl,5,1) as bigint)*9)
++(cast(substring(@psl,6,1) as bigint)*7)
++(cast(substring(@psl,7,1) as bigint)*3)
++(cast(substring(@psl,8,1) as bigint)*1)
++(cast(substring(@psl,9,1) as bigint)*9)
++(cast(substring(@psl,10,1) as bigint)*7) ) % 10
+= right(@psl,1) )
+begin
+return 1;
+end
+
+
+
+- jeśli numer PESEL pozytywnie przeszedł sprawdzenie wszystkich warunków, wówczas funkcja powinna zwrócić wartość 1, w przeciwnym wypadku ma zwrócić 0.
+- wywołanie funkcji: select [dbo].[is_pesel]('68082379779')
+
+4. Stwórz funkcję (pesel_plec), która z podanego numeru PESEL sprawdzi płeć (kobieta, mężczyzna).
+- odwołaj się do funkcji is_pesel (z pkt 3.), celem sprawdzenia czy podany numer to faktycznie numer PESEL
+- wywołanie funkcji: select [dbo].[pesel_plec]('68082379779')
+- gdy kobieta to 1, gdy mężczyzna to 0
+
+5. Stwórz funkcję get_wiek_from_pesel, która zwróci datę urodzenia (w formacie RRRR-MM-DD) z podanego numeru PESEL
+- odwołaj się do funkcji is_pesel (z pkt 3.), celem sprawdzenia czy podany numer to faktycznie numer PESEL
+- wywołanie funkcji: select [dbo].[get_wiek_from_pesel]('68082379779')
+
+6. Stwórz funkcję get_wiek_from_pesel, która zwróci WIEK (w latach) z podanego numeru PESEL
+- odwołaj się do funkcji is_pesel (z pkt 3.), celem sprawdzenia czy podany numer to faktycznie numer PESEL
+- wywołanie funkcji: select [dbo].[get_wiek_from_pesel]('68082379779')

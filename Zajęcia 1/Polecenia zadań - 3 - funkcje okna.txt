@@ -1,0 +1,35 @@
+1. Policz, ile razy sprzedany został każdy produkt, a następnie ponumeruj
+wiersze wyniku tego zapytania na dwa sposoby: w jednej kolumnie umieść
+numery od jednego (najczęściej sprzedawany produkt) do ostatniego na
+podstawie pozycji wiersza z danym produktem, w drugiej wstaw numery na
+podstawie liczby sprzedaży danego towaru (towary sprzedane tyle samo razy
+powinny mieć taki sam numer). Częściowy wynik pokazany został poniżej:
+ProductNumber SalesCount (No column name) (No column name)
+LJ-0192-L 10 1 1
+VE-C304-S 10 2 1
+SJ-0194-X 9 3 2
+CA-1098 9 4 2
+SJ-0194-L 8 5 3
+RA-H123 8 6 3
+
+
+2. Policz sumę zamówień na poziomie dni, miesięcy i lat dat zapłaty za
+poszczególne zamówienia (wartości kolumny DueDate). Dodaj też do zapytania
+sumę wartości wszystkich zamówień. Częściowy wynik pokazany został poniżej:
+year month day SalesPerDay SalesPerMonth SalesPerYear OverallSales
+2008 6 28 44688,6943 708766,4186 956303,5949 957276,3799
+2008 6 29 119960,824 708766,4186 956303,5949 957276,3799
+2008 6 14 103348,0081 708766,4186 956303,5949 957276,3799
+2008 7 14 103348,0081 248509,9613 956303,5949 957276,3799
+2008 7 1 2669,3183 248509,9613 956303,5949 957276,3799
+2008 7 4 3754,9733 248509,9613 956303,5949 957276,3799
+
+
+3. Policz różnicę wartości pomiędzy dwoma kolejnymi zamówieniami (przyjmij,
+że kolejność zamówień wyznaczana jest przez wartość SalesOrderID).
+Częściowy wynik pokazany został poniżej:
+SalesOrderID TotalDue (No column name)
+71774 972,785 NULL
+71776 87,0851 -885,6999
+71780 42452,6519 42365,5668
+71782 43962,7901 1510,1382

@@ -1,0 +1,28 @@
+1. Stwórz procedurę składowaną, która tworzy backup wszystkich baz danych (dla User lub System) w określonym katalogu na dysku.
+Pomocne mogą być:
+- wybranie baz: SELECT MIN(name) FROM sys.databases WHERE name IN 
+       ('master', 'model', 'msdb')
+- znaczek czasu do nazwy pliku:
+@timecomponent = REPLACE(REPLACE(REPLACE(CONVERT(
+          NVARCHAR, GETDATE(), 120), ' ', '_'), ':', ''), '-', '')
+
+- polecenie do stworzenia pliku z "nazwa.bak".
+ SET @sqlcommand = 'BACKUP DATABASE ' + @databasename + ' TO DISK = 
+          ''C:\Backups\' + @databasename + '_' + @timecomponent + '.bak'''
+
+- ustalenie typu bazy danych
+@databasetype NOT IN ('User', 'System')
+
+
+
+Przetestuj procedurę dla parametrów:
+EXEC dbo.BackupDatabases;
+GO
+
+EXEC dbo.BackupDatabases 'User';
+GO
+
+EXEC dbo.BackupDatabases 'System';
+GO
+
+EXEC dbo.BackupDatabases 'Unknown'

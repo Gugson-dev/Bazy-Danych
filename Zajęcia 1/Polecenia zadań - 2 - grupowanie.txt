@@ -1,0 +1,22 @@
+1. Odczytaj z tabeli [SalesLT].[SalesOrderHeader] wartości zamówień
+o najwyższych opłatach za wysyłkę zrealizowanych w każdym dniu dla
+poszczególnych klientów.
+
+2. Odczytaj nazwy produktów, które zostały sprzedane więcej niż trzy razy.
+Dodaj do wyniku liczbę tych produktów.
+
+3. Uruchom poniższy skrypt tworzący tabelę tymczasową i wstawiający do niej
+dane o numerach wybranych klientów, miesiącach złożenia przez nich zamówień
+i wartościach poszczególnych zamówień:
+CREATE TABLE #Sprzedaz
+([ID klienta] INT NOT NULL,
+Miesiąc INT NOT NULL,
+Wartość MONEY NOT NULL);
+GO
+INSERT INTO #Sprzedaz
+SELECT [CustomerID], DATEPART(MONTH, [OrderDate]), [TotalDue]
+FROM [SalesLT].[SalesOrderHeader];
+GO
+Zadanie polega na zbudowaniu tabeli przestawnej zawierającej całkowite wartości
+zamówień złożonych przez każdego z tych klientów w ciągu kolejnych miesięcy. Nagłówkami
+kolumn utworzonej tabeli przestawnej mają być numery miesięcy.
